@@ -1,9 +1,13 @@
-pub mod config;
+mod config;
+mod irc;
+mod message;
 
-pub mod discord;
-use discord::bot::Bot;
+mod discord;
+use discord::Discord;
 
 #[tokio::main]
 async fn main() {
-    Bot::start().await;
+    let mut bot = Discord::new().await;
+
+    bot.start().await
 }
